@@ -1,0 +1,87 @@
+#content{
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+    border:1px solid black;
+    border-radius: 5px;
+    box-shadow: 10px 0px 5px rgb(5, 93, 93);
+
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper/*, .flip-container.hover .flipper */{
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 320px;
+	height: 480px;
+}
+.flashcard_text{
+    padding:5px;
+}
+
+.front{
+    background-color: aquamarine;
+    border-radius: 5px;
+}
+
+.flashcard_header{
+    height: 20%;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.back{
+    background-color: teal;
+    border-radius: 5px;
+}
+
+.content_control{
+    font-size: 200%;
+    text-align: center;
+    padding: auto;
+    width:320px;
+    height:80px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px rgb(5, 93, 93);
+}
+.content_control:hover{
+    background-color:azure;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
